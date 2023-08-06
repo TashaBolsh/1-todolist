@@ -1,6 +1,7 @@
 import React, {useState, ChangeEvent} from "react";
 import {Simulate} from "react-dom/test-utils";
 import input = Simulate.input;
+import {TextField} from "@mui/material";
 
 type EditableSpanPropsType = {
     title: string
@@ -23,6 +24,6 @@ export function EditableSpan(props: EditableSpanPropsType) {
     const onChangeTitleHandler = (e: ChangeEvent<HTMLInputElement>)=>setTitle(e.currentTarget.value)
 
     return editMode
-        ? <input value={title} onChange={onChangeTitleHandler} onBlur={ectivateViewMode} autoFocus />
+        ? <TextField value={title} onChange={onChangeTitleHandler} onBlur={ectivateViewMode} autoFocus />
     : <span onDoubleClick={ectivateEditMode}>{props.title}</span>
 }
