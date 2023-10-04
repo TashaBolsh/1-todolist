@@ -1,5 +1,6 @@
-import {tasksReducer} from './tasks-reducer';
+import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from './tasks-reduser';
 import {TasksStateType} from '../App';
+import {AddTodolistAC, RemoveTodolistAC} from "./todolist-reduser";
 
 test('correct task should be deleted from correct array', () => {
     const startState: TasksStateType = {
@@ -133,7 +134,7 @@ test('title of specified task should be changed', () => {
     //      ]
     //  });
 
-    expect(endState["todolistId2"][1].title).toBe("Milkyway", "todolistId2");
+    expect(endState["todolistId2"][1].title).toBe("Milkyway");
     expect(endState["todolistId1"][1].title).toBe("JS");
 });
 
@@ -151,7 +152,7 @@ test('new property with new array should be added when new todolist is added', (
         ]
     };
 
-    const action = addTodolistAC("title no matter");
+    const action = AddTodolistAC("title no matter");
 
     const endState = tasksReducer(startState, action)
     //  expect(endState).toEqual({
@@ -189,7 +190,7 @@ test('property with todolist should be deleted', () => {
         ]
     };
 
-    const action = removeTodolistAC("todolistId2");
+    const action = RemoveTodolistAC("todolistId2");
 
     const endState = tasksReducer(startState, action)
     //  expect(endState).toEqual({
